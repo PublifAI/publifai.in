@@ -62,7 +62,67 @@
             border-radius: 12px 12px 0 12px;
             margin-left: auto;
         }
-    </style>
+        /* Hero chat animation */
+        @keyframes bubbleIn {
+            0% { opacity: 0; transform: translateY(8px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .hero-msg {
+            opacity: 0;
+            animation: bubbleIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .hero-msg.m1 { animation-delay: 0.3s; }
+        .hero-msg.m2 { animation-delay: 1.1s; }
+        .hero-msg.m3 { animation-delay: 1.9s; }
+        .hero-msg.m4 { animation-delay: 2.7s; }
+        .hero-msg.m5 { animation-delay: 3.6s; }
+        .hero-msg.m6 { animation-delay: 4.4s; }
+        .hero-typing {
+            opacity: 0;
+            animation: bubbleIn 0.3s ease forwards, fadeOut 0.3s ease 0.75s forwards;
+            animation-delay: 3.2s, 4.1s;
+        }
+        @keyframes fadeOut { to { opacity: 0; transform: translateY(-4px); } }
+        .typing-dot {
+            width: 6px; height: 6px; border-radius: 999px; background: #9CA3AF;
+            display: inline-block; margin: 0 1px;
+            animation: typingBounce 1s infinite ease-in-out;
+        }
+        .typing-dot:nth-child(2) { animation-delay: 0.15s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.3s; }
+        @keyframes typingBounce {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+            30% { transform: translateY(-3px); opacity: 1; }
+        }
+        /* Story cards */
+        .story-card {
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+            display: flex; flex-direction: column;
+        }
+        .story-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px -18px rgba(26,107,74,0.22);
+            border-color: rgba(26,107,74,0.25);
+        }
+        .story-problem { flex: 1; }
+        .story-solution {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #E5E7EB;
+            display: flex; gap: 12px; align-items: flex-start;
+        }
+        .story-solution-icon {
+            flex-shrink: 0; width: 22px; height: 22px; border-radius: 999px;
+            background: #1a6b4a; color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            margin-top: 2px;
+        }
+        .story-kicker {
+            font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+            text-transform: uppercase; color: #9CA3AF;
+            margin-bottom: 10px;
+        }
+</style>
 </head>
 <body class="font-sans bg-white text-gray-900 antialiased">
 
@@ -84,16 +144,46 @@
                 <a href="pilot.html" class="hover:text-brand transition-colors">Pricing</a>
             </div>
             <div class="flex items-center gap-2">
-                <a href="#audits" class="hidden md:inline-flex lg:hidden text-sm font-medium text-gray-600 hover:text-brand transition-colors px-2">Audits</a>
-                <a href="#faq" class="hidden md:inline-flex lg:hidden text-sm font-medium text-gray-600 hover:text-brand transition-colors px-2">FAQ</a>
                 <a href="pilot.html" class="hidden sm:inline-flex border border-brand/30 text-brand hover:bg-brand hover:text-white font-semibold text-sm px-4 py-2.5 rounded-lg transition-colors">Join the pilot</a>
                 <a href="https://wa.me/919910013910?text=Hi%2C%20I%27m%20interested%20in%20Publifai" target="_blank" class="bg-whatsapp hover:bg-whatsapp-hover text-white font-semibold text-sm px-4 md:px-5 py-2.5 rounded-lg transition-colors inline-flex items-center gap-2 shrink-0">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                     <span class="hidden sm:inline">WhatsApp us</span>
                 </a>
+                <button id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false" class="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-gray-700 hover:text-brand hover:bg-gray-50 transition-colors">
+                    <svg id="mobileMenuIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                    <svg id="mobileMenuIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6"/></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu drawer -->
+        <div id="mobileMenu" class="lg:hidden hidden border-t border-gray-100 bg-white">
+            <div class="max-w-6xl mx-auto px-5 py-4 flex flex-col gap-1 text-base font-medium text-gray-700">
+                <a href="#how" class="py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-brand transition-colors">How it works</a>
+                <a href="#get" class="py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-brand transition-colors">What you get</a>
+                <a href="#audits" class="py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-brand transition-colors">Sample audits</a>
+                <a href="#faq" class="py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-brand transition-colors">FAQ</a>
+                <a href="pilot.html" class="py-3 px-2 rounded-lg hover:bg-gray-50 hover:text-brand transition-colors">Pricing</a>
+                <a href="pilot.html" class="mt-2 border border-brand/30 text-brand hover:bg-brand hover:text-white font-semibold text-sm px-4 py-3 rounded-lg transition-colors text-center">Join the pilot</a>
             </div>
         </div>
     </nav>
+    <script>
+        (function() {
+            const btn = document.getElementById('mobileMenuBtn');
+            const menu = document.getElementById('mobileMenu');
+            const iOpen = document.getElementById('mobileMenuIconOpen');
+            const iClose = document.getElementById('mobileMenuIconClose');
+            const toggle = (force) => {
+                const willOpen = force !== undefined ? force : menu.classList.contains('hidden');
+                menu.classList.toggle('hidden', !willOpen);
+                iOpen.classList.toggle('hidden', willOpen);
+                iClose.classList.toggle('hidden', !willOpen);
+                btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+            };
+            btn.addEventListener('click', () => toggle());
+            menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggle(false)));
+        })();
+    </script>
 
     <!-- Section 1 — Hero -->
     <section class="pt-28 pb-16 md:pt-36 md:pb-24 px-5 relative overflow-hidden">
@@ -130,7 +220,7 @@
             <!-- Phone mockup -->
             <div class="flex justify-center lg:justify-end">
                 <div class="relative w-[290px] md:w-[320px]">
-                    <div class="absolute -inset-6 bg-gradient-to-br from-brand/15 to-whatsapp/15 rounded-[3rem] blur-2xl"></div>
+                    <div class="absolute -inset-4 bg-gradient-to-br from-brand/8 to-whatsapp/8 rounded-[3rem] blur-xl opacity-70"></div>
                     <div class="relative bg-gray-900 rounded-[2.5rem] p-3 shadow-2xl">
                         <div class="bg-[#ECE5DD] rounded-[2rem] overflow-hidden">
                             <!-- WhatsApp header -->
@@ -144,37 +234,42 @@
                             </div>
                             <!-- Chat -->
                             <div class="px-3 py-4 space-y-2 text-[13px] leading-snug min-h-[420px]">
-                                <div class="flex justify-end">
+                                <div class="flex justify-end hero-msg m1">
                                     <div class="bg-[#DCF8C6] rounded-lg rounded-tr-none px-3 py-2 max-w-[80%] shadow-sm">
                                         Bhaiya, jewellery shop hai meri MI Road pe. Nayi website chahiye 🙏
                                         <div class="text-[9px] text-gray-500 text-right mt-1">10:24 AM ✓✓</div>
                                     </div>
                                 </div>
-                                <div class="flex justify-start">
+                                <div class="flex justify-start hero-msg m2">
                                     <div class="bg-white rounded-lg rounded-tl-none px-3 py-2 max-w-[85%] shadow-sm">
                                         Ji Rajesh ji 👋 4 photos shop ki, timing aur services bhej dijiye. 5 din mein preview ready.
                                         <div class="text-[9px] text-gray-500 text-right mt-1">10:24 AM</div>
                                     </div>
                                 </div>
-                                <div class="flex justify-end">
+                                <div class="flex justify-end hero-msg m3">
                                     <div class="bg-[#DCF8C6] rounded-lg rounded-tr-none px-3 py-2 max-w-[80%] shadow-sm">
                                         [4 photos]
                                         <div class="text-[9px] text-gray-500 text-right mt-1">10:25 AM ✓✓</div>
                                     </div>
                                 </div>
-                                <div class="flex justify-start">
+                                <div class="flex justify-start hero-msg m4">
                                     <div class="bg-white rounded-lg rounded-tl-none px-3 py-2 max-w-[85%] shadow-sm">
                                         Perfect. Domain bhi aapke <em>naam</em> pe register karenge. Google &amp; ChatGPT pe bhi list karenge ✅
                                         <div class="text-[9px] text-gray-500 text-right mt-1">10:25 AM</div>
                                     </div>
                                 </div>
-                                <div class="flex justify-end">
+                                <div class="flex justify-end hero-msg m5">
                                     <div class="bg-[#DCF8C6] rounded-lg rounded-tr-none px-3 py-2 max-w-[80%] shadow-sm">
                                         Bhai ek month baad — new collection aayi hai, homepage update kar do
                                         <div class="text-[9px] text-gray-500 text-right mt-1">2:14 PM ✓✓</div>
                                     </div>
                                 </div>
-                                <div class="flex justify-start">
+                                <div class="flex justify-start hero-typing">
+                                    <div class="bg-white rounded-lg rounded-tl-none px-3 py-2 shadow-sm">
+                                        <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+                                    </div>
+                                </div>
+                                <div class="flex justify-start hero-msg m6">
                                     <div class="bg-white rounded-lg rounded-tl-none px-3 py-2 max-w-[85%] shadow-sm">
                                         Done in 2 hours. Live hai 🚀
                                         <div class="text-[9px] text-gray-500 text-right mt-1">4:10 PM</div>
@@ -192,20 +287,47 @@
     <section class="py-16 md:py-24 px-5 bg-gray-50/50">
         <div class="max-w-5xl mx-auto">
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white border border-gray-100 rounded-2xl p-7">
-                    <h3 class="font-bold text-lg mb-3">Your freelancer stopped replying in March.</h3>
-                    <p class="text-gray-600 text-[15px] leading-relaxed mb-4">You paid him ₹18,000 in January. He built the site, showed you the preview, and then went quiet. The site still says "Diwali offer — 20% off." It's August. You messaged him four times. Last seen yesterday. No reply.</p>
-                    <p class="text-brand font-medium text-[15px] leading-relaxed">We don't disappear. Every website we build gets updated the same day you send us a WhatsApp message. Forever.</p>
+                <!-- Card 1: Ghost freelancer -->
+                <div class="story-card bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="story-problem">
+                        <div class="story-kicker">The problem</div>
+                        <h3 class="font-bold text-lg mb-3 leading-snug text-gray-900">Your freelancer stopped replying in March.</h3>
+                        <p class="text-gray-600 text-[15px] leading-relaxed">You paid him ₹18,000 in January. He built the site, showed the preview, then went quiet. The site still says "Diwali offer — 20% off." It's August. Four messages, last seen yesterday.</p>
+                    </div>
+                    <div class="story-solution">
+                        <span class="story-solution-icon">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        </span>
+                        <p class="text-gray-800 text-[15px] leading-relaxed"><span class="font-semibold text-brand">We don't disappear.</span> Every site we build gets updated the same day you WhatsApp us. Forever.</p>
+                    </div>
                 </div>
-                <div class="bg-white border border-gray-100 rounded-2xl p-7">
-                    <h3 class="font-bold text-lg mb-3">Your website looks like 2019. Because it is from 2019.</h3>
-                    <p class="text-gray-600 text-[15px] leading-relaxed mb-4">It was fine when it went live. Now it loads slow on your phone. The photos are stretched. Your services page still lists things you stopped doing two years ago. The guy who built it wants ₹22,000 to "redesign" — but you're not sure he's still in business.</p>
-                    <p class="text-brand font-medium text-[15px] leading-relaxed">We rebuild it to look current in a week. Same content, fresh design, mobile-first. One WhatsApp chat. No login, no forms.</p>
+                <!-- Card 2: Stale website -->
+                <div class="story-card bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="story-problem">
+                        <div class="story-kicker">The problem</div>
+                        <h3 class="font-bold text-lg mb-3 leading-snug text-gray-900">Your website looks like 2019. Because it is from 2019.</h3>
+                        <p class="text-gray-600 text-[15px] leading-relaxed">It was fine when it went live. Now it loads slow on phones. Photos are stretched. The services page lists things you stopped doing two years ago. A redesign quote comes back at ₹22,000.</p>
+                    </div>
+                    <div class="story-solution">
+                        <span class="story-solution-icon">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        </span>
+                        <p class="text-gray-800 text-[15px] leading-relaxed"><span class="font-semibold text-brand">We rebuild it in a week.</span> Same content, fresh design, mobile-first. One WhatsApp chat — no login, no forms.</p>
+                    </div>
                 </div>
-                <div class="bg-white border border-gray-100 rounded-2xl p-7">
-                    <h3 class="font-bold text-lg mb-3">Your agency won't give you your domain back.</h3>
-                    <p class="text-gray-600 text-[15px] leading-relaxed mb-4">You asked them to transfer it to you. They said "we handle that internally." You asked for the login. They stopped replying. You looked up the WHOIS and the domain is registered in THEIR name, not yours. They want ₹8,000 to "release it."</p>
-                    <p class="text-brand font-medium text-[15px] leading-relaxed">Every Publifai customer's domain is in THEIR name. We give you the ownership certificate. If you already have a domain stuck somewhere, we'll help you get it back — free.</p>
+                <!-- Card 3: Domain hostage -->
+                <div class="story-card bg-white border border-gray-100 rounded-2xl p-7">
+                    <div class="story-problem">
+                        <div class="story-kicker">The problem</div>
+                        <h3 class="font-bold text-lg mb-3 leading-snug text-gray-900">Your agency won't give you your domain back.</h3>
+                        <p class="text-gray-600 text-[15px] leading-relaxed">You asked for a transfer. They said "we handle that internally." You checked WHOIS — the domain is in their name, not yours. They want ₹8,000 to "release it."</p>
+                    </div>
+                    <div class="story-solution">
+                        <span class="story-solution-icon">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        </span>
+                        <p class="text-gray-800 text-[15px] leading-relaxed"><span class="font-semibold text-brand">Your domain, your name — day one.</span> Already stuck somewhere? We'll help you get it back, free.</p>
+                    </div>
                 </div>
             </div>
             <p class="text-center text-xl md:text-2xl font-semibold text-gray-900 mt-12">If any of these is you, we built Publifai for you.</p>
@@ -255,52 +377,55 @@
 
     <!-- Section 5 — What you actually get -->
     <section id="get" class="py-16 md:py-24 px-5">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center">What you actually get.</h2>
-            <ol class="space-y-8">
-                <li class="flex gap-5">
-                    <span class="text-2xl font-bold text-brand flex-shrink-0">1.</span>
-                    <div>
-                        <h3 class="font-bold text-lg mb-1">A website that works on phones first.</h3>
-                        <p class="text-gray-600 leading-relaxed">Loads fast. Looks current. Your customers won't zoom in to read it.</p>
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 max-w-2xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">What you actually get.</h2>
+                <p class="text-gray-500 text-lg leading-relaxed">Six things, every time. No "SEO package" add-ons, no upsells.</p>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 hover:border-brand/30 hover:shadow-[0_12px_28px_-18px_rgba(26,107,74,0.25)] hover:-translate-y-0.5 transition-all duration-200">
+                    <div class="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path stroke-linecap="round" d="M11 18h2"/></svg>
                     </div>
-                </li>
-                <li class="flex gap-5">
-                    <span class="text-2xl font-bold text-brand flex-shrink-0">2.</span>
-                    <div>
-                        <h3 class="font-bold text-lg mb-1">Your own domain, in your name.</h3>
-                        <p class="text-gray-600 leading-relaxed">yourshop.com, not yourshop.somewixsite.com. We give you the ownership certificate the day it's registered.</p>
+                    <h3 class="font-bold text-[17px] mb-2 text-gray-900">Mobile-first, loads fast.</h3>
+                    <p class="text-gray-600 text-[15px] leading-relaxed">Looks current on a phone. Your customers won't zoom in to read it.</p>
+                </div>
+                <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 hover:border-brand/30 hover:shadow-[0_12px_28px_-18px_rgba(26,107,74,0.25)] hover:-translate-y-0.5 transition-all duration-200">
+                    <div class="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
                     </div>
-                </li>
-                <li class="flex gap-5">
-                    <span class="text-2xl font-bold text-brand flex-shrink-0">3.</span>
-                    <div>
-                        <h3 class="font-bold text-lg mb-1">Google Business Profile done right.</h3>
-                        <p class="text-gray-600 leading-relaxed">When someone nearby searches "jewellery shop MI Road," your shop shows up. We set this up for you.</p>
+                    <h3 class="font-bold text-[17px] mb-2 text-gray-900">Your domain, in your name.</h3>
+                    <p class="text-gray-600 text-[15px] leading-relaxed">yourshop.com — not yourshop.somewixsite.com. Ownership certificate on day one.</p>
+                </div>
+                <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 hover:border-brand/30 hover:shadow-[0_12px_28px_-18px_rgba(26,107,74,0.25)] hover:-translate-y-0.5 transition-all duration-200">
+                    <div class="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s7-6 7-12a7 7 0 1 0-14 0c0 6 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
                     </div>
-                </li>
-                <li class="flex gap-5">
-                    <span class="text-2xl font-bold text-brand flex-shrink-0">4.</span>
-                    <div>
-                        <h3 class="font-bold text-lg mb-1">Updates on WhatsApp, forever.</h3>
-                        <p class="text-gray-600 leading-relaxed">New prices, new photos, new services, new timings — send a message, it's done. No extra charges.</p>
+                    <h3 class="font-bold text-[17px] mb-2 text-gray-900">Google Business Profile, done right.</h3>
+                    <p class="text-gray-600 text-[15px] leading-relaxed">"Jewellery shop MI Road" — and your shop shows up. We set it up for you.</p>
+                </div>
+                <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 hover:border-brand/30 hover:shadow-[0_12px_28px_-18px_rgba(26,107,74,0.25)] hover:-translate-y-0.5 transition-all duration-200">
+                    <div class="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.5a8.5 8.5 0 1 1-3.2-6.63L21 3v5h-5"/></svg>
                     </div>
-                </li>
-                <li class="flex gap-5">
-                    <span class="text-2xl font-bold text-brand flex-shrink-0">5.</span>
-                    <div>
-                        <h3 class="font-bold text-lg mb-1">Found on Google. Cited by ChatGPT.</h3>
-                        <p class="text-gray-600 leading-relaxed">Real page titles, real descriptions, structured data on every page, an <code class="text-sm bg-gray-100 px-1.5 py-0.5 rounded">llms.txt</code> file for AI crawlers. The boring plumbing that decides whether ChatGPT, Perplexity and Gemini can actually answer "best [your category] in [your city]" with your name.</p>
+                    <h3 class="font-bold text-[17px] mb-2 text-gray-900">Updates on WhatsApp, forever.</h3>
+                    <p class="text-gray-600 text-[15px] leading-relaxed">New prices, photos, services, timings — send a message, it's done. No extra charges.</p>
+                </div>
+                <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 hover:border-brand/30 hover:shadow-[0_12px_28px_-18px_rgba(26,107,74,0.25)] hover:-translate-y-0.5 transition-all duration-200">
+                    <div class="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="m20 20-3.5-3.5"/><path stroke-linecap="round" stroke-linejoin="round" d="M8.5 11h5M11 8.5v5"/></svg>
                     </div>
-                </li>
-                <li class="flex gap-5">
-                    <span class="text-2xl font-bold text-brand flex-shrink-0">6.</span>
-                    <div>
-                        <h3 class="font-bold text-lg mb-1">Link previews that don't look broken.</h3>
-                        <p class="text-gray-600 leading-relaxed">When you paste your site into a WhatsApp chat or an Instagram bio, a real photo and a real headline show up. Most small business sites get a blank box. Yours won't.</p>
+                    <h3 class="font-bold text-[17px] mb-2 text-gray-900">Found on Google. Cited by ChatGPT.</h3>
+                    <p class="text-gray-600 text-[15px] leading-relaxed">Structured data, real meta tags, an <code class="text-[13px] bg-gray-100 px-1.5 py-0.5 rounded">llms.txt</code> file — so AI crawlers can actually answer with your name.</p>
+                </div>
+                <div class="feature-card bg-white border border-gray-100 rounded-2xl p-6 hover:border-brand/30 hover:shadow-[0_12px_28px_-18px_rgba(26,107,74,0.25)] hover:-translate-y-0.5 transition-all duration-200">
+                    <div class="w-11 h-11 rounded-xl bg-green-50 flex items-center justify-center mb-4">
+                        <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="m3 8 9 6 9-6"/></svg>
                     </div>
-                </li>
-            </ol>
+                    <h3 class="font-bold text-[17px] mb-2 text-gray-900">Link previews that don't look broken.</h3>
+                    <p class="text-gray-600 text-[15px] leading-relaxed">Paste your URL in WhatsApp or Instagram — a real photo and headline show up. Not a blank box.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -359,6 +484,16 @@
 
                 <div class="faq-item bg-white border border-gray-100 rounded-2xl overflow-hidden">
                     <button class="faq-trigger w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:text-brand transition-colors">
+                        <span class="font-bold text-base">How much?</span>
+                        <svg class="faq-chevron w-5 h-5 text-gray-400 shrink-0 transition-transform duration-200 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <div class="faq-answer px-6 pb-5">
+                        <p class="text-gray-600 leading-relaxed">Pilot price: ₹9,999/year — that covers setup, hosting, domain, and all updates for 12 months. Regular price after the pilot is ₹26,400/year. Everything included. No "SEO package" or "maintenance plan" add-ons.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item bg-white border border-gray-100 rounded-2xl overflow-hidden">
+                    <button class="faq-trigger w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:text-brand transition-colors">
                         <span class="font-bold text-base">What if YOU disappear like my last guy?</span>
                         <svg class="faq-chevron w-5 h-5 text-gray-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                     </button>
@@ -384,16 +519,6 @@
                     </button>
                     <div class="faq-answer hidden px-6 pb-5">
                         <p class="text-gray-600 leading-relaxed">Usually, yes. We've done it before. We'll write them the right email in the right tone and walk you through the transfer. No extra charge for this.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item bg-white border border-gray-100 rounded-2xl overflow-hidden">
-                    <button class="faq-trigger w-full text-left px-6 py-5 flex items-center justify-between gap-4 hover:text-brand transition-colors">
-                        <span class="font-bold text-base">How much?</span>
-                        <svg class="faq-chevron w-5 h-5 text-gray-400 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                    </button>
-                    <div class="faq-answer hidden px-6 pb-5">
-                        <p class="text-gray-600 leading-relaxed">Pilot price: ₹9,999/year — that covers setup, hosting, domain, and all updates for 12 months. Regular price after the pilot is ₹26,400/year. Everything included. No "SEO package" or "maintenance plan" add-ons.</p>
                     </div>
                 </div>
 
