@@ -2,7 +2,7 @@
 
 ## Project
 
-**kamai.company** — Landing page / 1-pager for Kam+AI, a conversational operating system for India's small businesses. Will be deployed at kamai.company.
+**publif.ai** — Landing page for Publifai, a WhatsApp-powered website creation service for India's small businesses. Legal entity: PublifyX Tech Pvt. Ltd. Deployed at publif.ai.
 
 ## Tech Stack
 
@@ -15,10 +15,14 @@
 ## Structure
 
 ```
-index.html                ← Vision / company landing page (kamai.company)
+index.html                ← Vision / company landing page (publif.ai)
 pilot.html                ← Pilot offer page (₹4,999 setup + ₹499/mo) — linked from index
 pilot-1pager.html         ← Old pilot 1-pager (reference, superseded by pilot.html)
 internal-product-doc.html ← Internal product doc (noindex, not linked — team-only via direct URL)
+privacy.html              ← Privacy Policy (required for Razorpay)
+terms.html                ← Terms & Conditions (required for Razorpay)
+refunds.html              ← Refunds & Cancellation Policy (required for Razorpay)
+contact.html              ← Contact Us (required for Razorpay)
 home.jsx                  ← Original React component (reference only, not used)
 Kamai.md                  ← Full vision document and product spec (source of truth)
 kam_ai_compressed.docx.pdf ← Master launch document (strategy + GTM playbook)
