@@ -1,0 +1,62 @@
+# Publifai
+
+> Websites for small businesses, built on WhatsApp.
+
+Publifai is a product of PublifyX Tech Pvt. Ltd. We help India's small businesses get professional websites through a simple WhatsApp conversation — no dashboards, no code, no agencies.
+
+## What we do
+
+- AI-powered website creation via WhatsApp/Telegram chat
+- Professional hosting on custom domains or subdomains
+- SEO optimization for Google and AI search engines (ChatGPT, Perplexity, etc.)
+- Ongoing website updates and maintenance through chat
+- Business listing and digital presence management
+
+## Who we serve
+
+~63 million Indian SMBs — chai stalls, tutors, clinics, freelancers, local shops, and small service businesses that need a web presence but don't have the time, budget, or tech skills for traditional website builders.
+
+## How it works
+
+1. Message us on WhatsApp
+2. Tell us about your business
+3. We build your website within 48 hours
+4. Update it anytime — just send a message
+
+## Pricing
+
+- Free tier: Publifai subdomain, up to 3 pages
+- Starter: ₹199/month
+- Pro: ₹499/month
+- Business: ₹999/month
+
+## Contact
+
+- Website: https://publif.ai
+- WhatsApp: +91 92057 99399
+- Email: info@publifyx.com
+
+## Legal entity
+
+PublifyX Tech Private Limited
+Plot No-11, 504, Railway Staff CGHS Ltd, Amberhai Sector-19B, Vinayak Apartment Park, South West Delhi, Delhi, India
+CIN: U62091DL2023PTC416776
+GSTIN: 07AANCP9056H1ZW
+
+## Founders
+
+- Shashank Singla — Co-founder (Product/Strategy/Engineering), HCode Technologies
+- Gaurav Tiwari — Co-founder, CEO of PayTunes
+
+## Links
+
+- Home: https://publif.ai/
+- Pilot Offer: https://publif.ai/pilot.html
+- Terms & Conditions: https://publif.ai/terms.html
+- Privacy Policy: https://publif.ai/privacy.html
+- Refunds & Cancellation: https://publif.ai/refunds.html
+- Contact Us: https://publif.ai/contact.html
+
+## Powered by
+
+niptao.com
